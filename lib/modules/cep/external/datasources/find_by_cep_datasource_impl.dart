@@ -10,12 +10,14 @@ class FindByCepDataSourceImple implements IFindByCepDataSource{
   FindByCepDataSourceImple(this.dio);
   @override
   Future<AdressModel> findCep(String cep) async {
-    final response = await dio.get('https://viacep.com.br/ws/85015150/json/');
+    print('https://viacep.com.br/ws/${cep}/json/');
+    final response = await dio.get('https://viacep.com.br/ws/${cep}/json/');
     if(response.statusCode == 200){
+      print(response.data);
       final adress = AdressModel.fromJson(response.data);
       return adress;
     } else {
-      throw FindCepException(message: "Algo de errado aconteceu na requisição!");
+      throw FindCepException(message: "Algo de errado aconteceu na requisição! Por favor verifique se o CEP inserido é existente!");
     }
   }
 

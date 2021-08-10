@@ -1,5 +1,8 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_cep_clean_and_tests/modules/cep/external/datasources/find_by_cep_datasource_impl.dart';
+import 'package:flutter_cep_clean_and_tests/modules/cep/presenter/find_cep/find_cep_screen.dart';
+import 'package:flutter_cep_clean_and_tests/modules/cep/presenter/find_cep/find_cep_store.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import 'modules/cep/infra/repositories/find_by_cep_repository.dart';
@@ -11,5 +14,11 @@ class AppModule extends Module{
     Bind((i) => FindByCepDataSourceImple(i())),
     Bind((i) => FindByCepRepository(i())),
     Bind((i) => FindByCepImpl(i())),
+    Bind((i) => FindCepStore(i())),
+  ];
+
+  @override
+  final List<ModularRoute> routes = [
+    ChildRoute('/', child: (_, args) => FindByCep()),
   ];
 }
