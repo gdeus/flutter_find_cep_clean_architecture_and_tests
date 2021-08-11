@@ -21,6 +21,6 @@ void main() {
   test('return is FindCepExpetion', () async {
     when(datasource.findCep(any)).thenThrow(Exception());
     final result = await respository.findByCep('85877000');
-    expect(result.fold(id, id), isA<FindCepException>());
+    expect(result.fold(id, id), isA<ErrorSearch>());
   });
 }

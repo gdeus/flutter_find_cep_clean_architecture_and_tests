@@ -1,5 +1,9 @@
-class FindCepException implements Exception{
-  final String message;
+class Failure implements Exception{}
 
-  FindCepException({this.message});
-}
+class InvalidSearchText extends Failure{}
+
+class CepNotFound extends Failure{}
+
+class ErrorSearch extends Failure{}
+
+class DatasourceResultNull extends Failure{}

@@ -9,18 +9,48 @@ part of 'find_cep_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$FindCepStore on _FindCepStoreBase, Store {
-  final _$loadingAtom = Atom(name: '_FindCepStoreBase.loading');
+  final _$loadingStateAtom = Atom(name: '_FindCepStoreBase.loadingState');
 
   @override
-  bool get loading {
-    _$loadingAtom.reportRead();
-    return super.loading;
+  bool get loadingState {
+    _$loadingStateAtom.reportRead();
+    return super.loadingState;
   }
 
   @override
-  set loading(bool value) {
-    _$loadingAtom.reportWrite(value, super.loading, () {
-      super.loading = value;
+  set loadingState(bool value) {
+    _$loadingStateAtom.reportWrite(value, super.loadingState, () {
+      super.loadingState = value;
+    });
+  }
+
+  final _$startStateAtom = Atom(name: '_FindCepStoreBase.startState');
+
+  @override
+  bool get startState {
+    _$startStateAtom.reportRead();
+    return super.startState;
+  }
+
+  @override
+  set startState(bool value) {
+    _$startStateAtom.reportWrite(value, super.startState, () {
+      super.startState = value;
+    });
+  }
+
+  final _$errorStateAtom = Atom(name: '_FindCepStoreBase.errorState');
+
+  @override
+  bool get errorState {
+    _$errorStateAtom.reportRead();
+    return super.errorState;
+  }
+
+  @override
+  set errorState(bool value) {
+    _$errorStateAtom.reportWrite(value, super.errorState, () {
+      super.errorState = value;
     });
   }
 
@@ -49,7 +79,9 @@ mixin _$FindCepStore on _FindCepStoreBase, Store {
   @override
   String toString() {
     return '''
-loading: ${loading},
+loadingState: ${loadingState},
+startState: ${startState},
+errorState: ${errorState},
 adressModel: ${adressModel}
     ''';
   }

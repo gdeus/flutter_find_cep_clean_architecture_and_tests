@@ -3,5 +3,5 @@ import 'package:flutter_cep_clean_and_tests/modules/cep/domain/entities/adress.d
 import 'package:flutter_cep_clean_and_tests/modules/cep/domain/errors/errors.dart';
 
 abstract class IFindCepRepository{
-  Future<Either<FindCepException, Adress>> findByCep(String cep);
+  Future<Either<Failure, Adress>> findByCep(String cep);
 }

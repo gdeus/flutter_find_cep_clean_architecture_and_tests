@@ -14,17 +14,23 @@ abstract class _FindCepStoreBase with Store {
   _FindCepStoreBase(this.usecase);
 
   @observable
-  bool loading = false; 
+  bool loadingState = false; 
 
   @observable
-  AdressModel adressModel = AdressModel(city: '');
+  bool startState = true;
+
+  @observable
+  bool errorState = false;
+
+  @observable
+  AdressModel adressModel = AdressModel(error: false);
 
   @action
   Future<void> findCep(String cep) async {
-    loading = true;
+    loadingState = true;
+    startState = false;
     final result = await usecase(cep);
-    loading = false;
-    result.fold((l) => (l), (r) => adressModel = r);
-    print(adressModel.city);
+    loadingState = false;
+    result.fold((l) => errorState = true, (r) => adressModel = r);
   }
 }

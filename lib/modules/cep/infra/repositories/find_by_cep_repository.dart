@@ -12,14 +12,12 @@ class FindByCepRepository implements IFindCepRepository{
   FindByCepRepository(this.datasource);
 
   @override
-  Future<Either<FindCepException, Adress>> findByCep(String cep) async {
+  Future<Either<Failure, Adress>> findByCep(String cep) async {
     try{
       final adress = await datasource.findCep(cep);
       return Right(adress);
-    } on FindCepException catch(e){
-      return Left(e);
-    } on Exception {
-      return Left(FindCepException(message: 'Exception error'));
+    } catch(e){
+      return Left(ErrorSearch());
     }
   }
 

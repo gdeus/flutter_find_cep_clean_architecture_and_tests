@@ -7,9 +7,9 @@ import 'package:dartz/dartz.dart';
 
 class FindCepRepositoryMock implements IFindCepRepository{
   @override
-  Future<Either<FindCepException, Adress>> findByCep(String cep) async {
+  Future<Either<Failure, Adress>> findByCep(String cep) async {
     if(cep.length != 8){
-      return Left(FindCepException(message: "CEP inválido"));
+      return Left(InvalidSearchText());
     }
 
     return Right(Adress(

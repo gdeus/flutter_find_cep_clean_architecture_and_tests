@@ -18,7 +18,7 @@ class FindByCepImpl implements IFindCep{
     cep = cep.replaceAll('-', '');
 
     if(cep.length != 8){
-      return Left(FindCepException(message: "Seu CEP deve ter 8 dígitos"));
+      return Left(InvalidSearchText());
     }
 
     return await repository.findByCep(cep);

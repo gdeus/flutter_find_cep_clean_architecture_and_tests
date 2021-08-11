@@ -26,7 +26,7 @@ void main() {
   test('return usecase no error', () async {
     final usecase = Modular.get<IFindCep>();
     final result = await usecase("85015150");
-    expect(result | null, isA<Adress>());
+    expect(result | null , isA<Adress>());
   });
   
   test('return an address based on a zip code', () async {

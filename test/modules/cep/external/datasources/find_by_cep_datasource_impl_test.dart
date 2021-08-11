@@ -23,7 +23,7 @@ void main() {
   test('return a error if status code not 200 ', () async {
     when(dio.get(any)).thenAnswer((_) async => Response(data: null, statusCode: 401));
     final future = datasource.findCep("12345678");
-    expect(future, throwsA(isA<FindCepException>()));
+    expect(future, throwsA(isA<ErrorSearch>()));
   });
 }
 

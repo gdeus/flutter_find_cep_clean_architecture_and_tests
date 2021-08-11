@@ -19,9 +19,7 @@ class _FindByCepState extends State<FindByCep> {
         title: Text("Ache seu cep"),
         centerTitle: true,
       ),
-      body: Observer(
-        builder: (context) {
-          return Column(
+      body: Column(
             children: [
               Padding(
                 padding: EdgeInsets.all(10.0),
@@ -37,14 +35,23 @@ class _FindByCepState extends State<FindByCep> {
                 child: ElevatedButton(
                   child: Text("Busca CEP"),
                   onPressed: (){
-                    store.findCep("85877000");
+                    store.findCep("85015150");
                   },
                 )
               ),
-              Text(store.loading ? 'Carregando' : store.adressModel.city)
+              Observer(builder: (context){
+                if(store.startState){
+                  return Text("Favor faça uma busca");
+                }
+                if(store.loadingState){
+                  return Text("Carregando");
+                }
+                if(store.errorState){
+                  return Text("Ocorreu algum erro");
+                }
+                return Text(store.adressModel.city);
+              },)
             ],
-          );
-        }
       )
     );
   }

@@ -10,8 +10,9 @@ class AdressModel extends Adress{
   String gia;
   String ddd;
   String siafi;
+  bool error;
 
-  AdressModel({this.cep, this.publicAdress, this.complement, this.district, this.city, this.uf, this.gia, this.ddd, this.siafi});
+  AdressModel({this.cep, this.publicAdress, this.complement, this.district, this.city, this.uf, this.gia, this.ddd, this.siafi, this.error});
 
   AdressModel.fromJson(Map<String, dynamic> json) {
     cep = json['cep'];
