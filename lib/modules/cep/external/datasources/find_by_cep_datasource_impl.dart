@@ -1,4 +1,3 @@
-import 'package:flutter_cep_clean_and_tests/modules/cep/domain/entities/adress.dart';
 import 'package:flutter_cep_clean_and_tests/modules/cep/domain/errors/errors.dart';
 import 'package:flutter_cep_clean_and_tests/modules/cep/infra/datasources/find_by_cep_datasource.dart';
 import 'package:dio/dio.dart';

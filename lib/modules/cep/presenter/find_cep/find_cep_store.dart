@@ -1,5 +1,4 @@
 import 'package:flutter_cep_clean_and_tests/modules/cep/domain/usecases/findCep.dart';
-import 'package:flutter_cep_clean_and_tests/modules/cep/infra/models/adress_model.dart';
 import 'package:flutter_cep_clean_and_tests/modules/cep/presenter/find_cep/states/cep_states.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';

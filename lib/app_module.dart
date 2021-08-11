@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_cep_clean_and_tests/modules/cep/external/datasources/find_by_cep_datasource_impl.dart';
 import 'package:flutter_cep_clean_and_tests/modules/cep/presenter/find_cep/find_cep_screen.dart';
 import 'package:flutter_cep_clean_and_tests/modules/cep/presenter/find_cep/find_cep_store.dart';

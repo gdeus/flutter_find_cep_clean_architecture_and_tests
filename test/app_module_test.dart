@@ -4,7 +4,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter_cep_clean_and_tests/app_module.dart';
 import 'package:flutter_cep_clean_and_tests/modules/cep/domain/entities/adress.dart';
 import 'package:flutter_cep_clean_and_tests/modules/cep/domain/usecases/findCep.dart';
-import 'package:flutter_cep_clean_and_tests/modules/cep/infra/models/adress_model.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_modular_test/flutter_modular_test.dart';
 import 'package:flutter_test/flutter_test.dart';
