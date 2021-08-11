@@ -18,9 +18,6 @@ abstract class _FindCepStoreBase with Store {
   String cep = "";
 
   @observable
-  AdressModel adress;
-
-  @observable
   CepState state = StartState();
 
   @action

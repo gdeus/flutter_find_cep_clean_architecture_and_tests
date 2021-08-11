@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_cep_clean_and_tests/modules/cep/presenter/find_cep/find_cep_store.dart';
 import 'package:flutter_cep_clean_and_tests/modules/cep/presenter/find_cep/states/cep_states.dart';
+import 'package:flutter_cep_clean_and_tests/modules/cep/presenter/find_cep/widgets/sucess.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -11,7 +12,6 @@ class FindByCep extends StatefulWidget {
 }
 
 class _FindByCepState extends ModularState<FindByCep, FindCepStore> {
-  final FindCepStore store = Modular.get();
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +27,9 @@ class _FindByCepState extends ModularState<FindByCep, FindCepStore> {
                 child: TextField(
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
-                    hintText: "Digite seu CEP"
+                    hintText: "Digite seu CEP",
                   ),
+                  onChanged: store.setCepText,
                 ),
               ),
               Padding(
@@ -36,23 +37,24 @@ class _FindByCepState extends ModularState<FindByCep, FindCepStore> {
                 child: ElevatedButton(
                   child: Text("Busca CEP"),
                   onPressed: (){
-                    store.findCep("12345678");
+                    store.findCep(controller.cep);
                   },
                 )
               ),
               Observer(
-                builder: (context){
-                  if(store.state is ErrorState){
+                builder: (_){
+                  var state = controller.state;
+                  if(state is ErrorState){
                     return Text("Error");
                   }
-                  if(store.state is StartState){
+                  if(state is StartState){
                     return Text("Faça uma busca");
                   }
-                  if(store.state is LoadingState){
+                  if(state is LoadingState){
                     return Text("Carregando...");
                   }
-                  if(store.state is SucessState){
-                    return Text("Sucesso");
+                  if(state is SucessState){
+                    return SucessFindCep(state.adress);
                   }
                   return Text("Lute");
                 },)

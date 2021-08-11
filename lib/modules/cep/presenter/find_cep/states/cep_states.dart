@@ -1,5 +1,6 @@
 import 'package:flutter_cep_clean_and_tests/modules/cep/domain/entities/adress.dart';
 import 'package:flutter_cep_clean_and_tests/modules/cep/domain/errors/errors.dart';
+import 'package:flutter_cep_clean_and_tests/modules/cep/infra/models/adress_model.dart';
 
 abstract class CepState{}
 
@@ -17,6 +18,6 @@ class ErrorState implements CepState{
 }
 
 class SucessState implements CepState{
-  final Adress adress;
+  final AdressModel adress;
   const SucessState(this.adress);
 }

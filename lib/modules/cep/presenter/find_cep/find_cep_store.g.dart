@@ -24,21 +24,6 @@ mixin _$FindCepStore on _FindCepStoreBase, Store {
     });
   }
 
-  final _$adressAtom = Atom(name: '_FindCepStoreBase.adress');
-
-  @override
-  AdressModel get adress {
-    _$adressAtom.reportRead();
-    return super.adress;
-  }
-
-  @override
-  set adress(AdressModel value) {
-    _$adressAtom.reportWrite(value, super.adress, () {
-      super.adress = value;
-    });
-  }
-
   final _$stateAtom = Atom(name: '_FindCepStoreBase.state');
 
   @override
@@ -90,7 +75,6 @@ mixin _$FindCepStore on _FindCepStoreBase, Store {
   String toString() {
     return '''
 cep: ${cep},
-adress: ${adress},
 state: ${state}
     ''';
   }
