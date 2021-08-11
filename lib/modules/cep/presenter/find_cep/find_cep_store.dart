@@ -1,5 +1,6 @@
 import 'package:flutter_cep_clean_and_tests/modules/cep/domain/usecases/findCep.dart';
 import 'package:flutter_cep_clean_and_tests/modules/cep/infra/models/adress_model.dart';
+import 'package:flutter_cep_clean_and_tests/modules/cep/presenter/find_cep/states/cep_states.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 
@@ -14,23 +15,24 @@ abstract class _FindCepStoreBase with Store {
   _FindCepStoreBase(this.usecase);
 
   @observable
-  bool loadingState = false; 
+  String cep = "";
 
   @observable
-  bool startState = true;
+  AdressModel adress;
 
   @observable
-  bool errorState = false;
-
-  @observable
-  AdressModel adressModel = AdressModel(error: false);
+  CepState state = StartState();
 
   @action
-  Future<void> findCep(String cep) async {
-    loadingState = true;
-    startState = false;
+  setCepText(String value) => cep = value;
+
+  @action
+  setState(CepState value) => state = value;
+
+  @action
+  Future<CepState> findCep(String cep) async {
+    setState(LoadingState());
     final result = await usecase(cep);
-    loadingState = false;
-    result.fold((l) => errorState = true, (r) => adressModel = r);
+    return result.fold((l) => setState(ErrorState(l)), (r) => setState(SucessState(r)));
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_cep_clean_and_tests/modules/cep/presenter/find_cep/find_cep_store.dart';
+import 'package:flutter_cep_clean_and_tests/modules/cep/presenter/find_cep/states/cep_states.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -9,7 +10,7 @@ class FindByCep extends StatefulWidget {
   _FindByCepState createState() => _FindByCepState();
 }
 
-class _FindByCepState extends State<FindByCep> {
+class _FindByCepState extends ModularState<FindByCep, FindCepStore> {
   final FindCepStore store = Modular.get();
 
   @override
@@ -35,22 +36,26 @@ class _FindByCepState extends State<FindByCep> {
                 child: ElevatedButton(
                   child: Text("Busca CEP"),
                   onPressed: (){
-                    store.findCep("85015150");
+                    store.findCep("12345678");
                   },
                 )
               ),
-              Observer(builder: (context){
-                if(store.startState){
-                  return Text("Favor faça uma busca");
-                }
-                if(store.loadingState){
-                  return Text("Carregando");
-                }
-                if(store.errorState){
-                  return Text("Ocorreu algum erro");
-                }
-                return Text(store.adressModel.city);
-              },)
+              Observer(
+                builder: (context){
+                  if(store.state is ErrorState){
+                    return Text("Error");
+                  }
+                  if(store.state is StartState){
+                    return Text("Faça uma busca");
+                  }
+                  if(store.state is LoadingState){
+                    return Text("Carregando...");
+                  }
+                  if(store.state is SucessState){
+                    return Text("Sucesso");
+                  }
+                  return Text("Lute");
+                },)
             ],
       )
     );

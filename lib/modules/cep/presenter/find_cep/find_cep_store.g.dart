@@ -9,80 +9,89 @@ part of 'find_cep_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$FindCepStore on _FindCepStoreBase, Store {
-  final _$loadingStateAtom = Atom(name: '_FindCepStoreBase.loadingState');
+  final _$cepAtom = Atom(name: '_FindCepStoreBase.cep');
 
   @override
-  bool get loadingState {
-    _$loadingStateAtom.reportRead();
-    return super.loadingState;
+  String get cep {
+    _$cepAtom.reportRead();
+    return super.cep;
   }
 
   @override
-  set loadingState(bool value) {
-    _$loadingStateAtom.reportWrite(value, super.loadingState, () {
-      super.loadingState = value;
+  set cep(String value) {
+    _$cepAtom.reportWrite(value, super.cep, () {
+      super.cep = value;
     });
   }
 
-  final _$startStateAtom = Atom(name: '_FindCepStoreBase.startState');
+  final _$adressAtom = Atom(name: '_FindCepStoreBase.adress');
 
   @override
-  bool get startState {
-    _$startStateAtom.reportRead();
-    return super.startState;
+  AdressModel get adress {
+    _$adressAtom.reportRead();
+    return super.adress;
   }
 
   @override
-  set startState(bool value) {
-    _$startStateAtom.reportWrite(value, super.startState, () {
-      super.startState = value;
+  set adress(AdressModel value) {
+    _$adressAtom.reportWrite(value, super.adress, () {
+      super.adress = value;
     });
   }
 
-  final _$errorStateAtom = Atom(name: '_FindCepStoreBase.errorState');
+  final _$stateAtom = Atom(name: '_FindCepStoreBase.state');
 
   @override
-  bool get errorState {
-    _$errorStateAtom.reportRead();
-    return super.errorState;
+  CepState get state {
+    _$stateAtom.reportRead();
+    return super.state;
   }
 
   @override
-  set errorState(bool value) {
-    _$errorStateAtom.reportWrite(value, super.errorState, () {
-      super.errorState = value;
-    });
-  }
-
-  final _$adressModelAtom = Atom(name: '_FindCepStoreBase.adressModel');
-
-  @override
-  AdressModel get adressModel {
-    _$adressModelAtom.reportRead();
-    return super.adressModel;
-  }
-
-  @override
-  set adressModel(AdressModel value) {
-    _$adressModelAtom.reportWrite(value, super.adressModel, () {
-      super.adressModel = value;
+  set state(CepState value) {
+    _$stateAtom.reportWrite(value, super.state, () {
+      super.state = value;
     });
   }
 
   final _$findCepAsyncAction = AsyncAction('_FindCepStoreBase.findCep');
 
   @override
-  Future<void> findCep(String cep) {
+  Future<CepState> findCep(String cep) {
     return _$findCepAsyncAction.run(() => super.findCep(cep));
+  }
+
+  final _$_FindCepStoreBaseActionController =
+      ActionController(name: '_FindCepStoreBase');
+
+  @override
+  dynamic setCepText(String value) {
+    final _$actionInfo = _$_FindCepStoreBaseActionController.startAction(
+        name: '_FindCepStoreBase.setCepText');
+    try {
+      return super.setCepText(value);
+    } finally {
+      _$_FindCepStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic setState(CepState value) {
+    final _$actionInfo = _$_FindCepStoreBaseActionController.startAction(
+        name: '_FindCepStoreBase.setState');
+    try {
+      return super.setState(value);
+    } finally {
+      _$_FindCepStoreBaseActionController.endAction(_$actionInfo);
+    }
   }
 
   @override
   String toString() {
     return '''
-loadingState: ${loadingState},
-startState: ${startState},
-errorState: ${errorState},
-adressModel: ${adressModel}
+cep: ${cep},
+adress: ${adress},
+state: ${state}
     ''';
   }
 }
