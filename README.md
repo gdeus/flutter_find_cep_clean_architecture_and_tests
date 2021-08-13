@@ -1,3 +1,4 @@
+![Android Emulator - Pixel_4_API_30_5554 2021-08-13 11-06-12](https://user-images.githubusercontent.com/13950034/129371656-45774c97-950a-4b65-9122-7bf71f937d4f.gif)
 # flutter_cep_clean_and_tests
 
 A new Flutter project.
