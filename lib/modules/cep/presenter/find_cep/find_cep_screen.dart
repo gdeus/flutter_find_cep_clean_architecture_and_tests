@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_cep_clean_and_tests/modules/cep/presenter/find_cep/find_cep_store.dart';
 import 'package:flutter_cep_clean_and_tests/modules/cep/presenter/find_cep/states/cep_states.dart';
 import 'package:flutter_cep_clean_and_tests/modules/cep/presenter/find_cep/widgets/error.dart';
+import 'package:flutter_cep_clean_and_tests/modules/cep/presenter/find_cep/widgets/loading_skeleton.dart';
 import 'package:flutter_cep_clean_and_tests/modules/cep/presenter/find_cep/widgets/sucess.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -20,7 +21,7 @@ class _FindByCepState extends ModularState<FindByCep, FindCepStore> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Ache seu cep"),
+        title: Text("Ache seu CEP"),
         centerTitle: true,
       ),
       body: Column(
@@ -80,15 +81,15 @@ class _FindByCepState extends ModularState<FindByCep, FindCepStore> {
                     return ErrorFindCep(state.error);
                   }
                   if(state is StartState){
-                    return Text("Faça uma busca");
+                    return Text("Favor faça uma busca");
                   }
                   if(state is LoadingState){
-                    return Text("Carregando...");
+                    return LoadingSkeleton();
                   }
                   if(state is SucessState){
                     return SucessFindCep(state.adress);
                   }
-                  return Text("Lute");
+                  return Text("Ocorreu algum erro, favor buscar novamente");
                 },)
             ],
       )
