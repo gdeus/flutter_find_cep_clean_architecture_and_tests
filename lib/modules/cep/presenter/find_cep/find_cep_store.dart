@@ -20,7 +20,11 @@ abstract class _FindCepStoreBase with Store {
   CepState state = StartState();
 
   @action
-  setCepText(String value) => cep = value;
+  setCepText(String value) {
+    value = value.replaceAll('.', "");
+    value = value.replaceAll('-', "");
+    cep = value;
+  }
 
   @action
   setState(CepState value) => state = value;
